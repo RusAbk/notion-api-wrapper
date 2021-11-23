@@ -41,18 +41,20 @@ class Notion{
         curl_setopt($this->curl, CURLOPT_VERBOSE, 1);
     }
 
-    function get_db_info($id){
+    function db_get_info($id){
         return $this->curl_get('https://api.notion.com/v1/databases/' . $id, []);
     }
-    function get_db_info_arr($id){
+    function db_get_info_arr($id){
         return json_decode($this->get_db_info($id));
     }
     
-    function get_db_items($id, $options = []){
+    function db_get_items($id, $options = []){
         return $this->curl_post('https://api.notion.com/v1/databases/' . $id . '/query', $options);
     }
-    function get_db_items_arr($id, $options = []){
+    function db_get_items_arr($id, $options = []){
         return json_decode($this->get_db_items($id, $options));
     }
+
+    
 }
 ?>
